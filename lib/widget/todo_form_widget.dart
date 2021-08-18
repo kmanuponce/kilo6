@@ -24,22 +24,31 @@ class TodoFormWidget extends StatelessWidget {
             buildTitle(),
             SizedBox(height: 8),
             buildDescription(),
-            SizedBox(height: 16),
+            SizedBox(height: 32),
             buildButton(),
           ],
         ),
       );
 
+  // title
   Widget buildTitle() => TextFormField(
+        
+        // How many lines you input
         maxLines: 1,
+        
         initialValue: title,
+        
+        // everytime type, TodoDialog
         onChanged: onChangedTitle,
+        
+        // make sure TITLE is always filled
         validator: (title) {
           if (title.isEmpty) {
             return 'The title cannot be empty';
           }
           return null;
         },
+
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Title',
@@ -48,14 +57,19 @@ class TodoFormWidget extends StatelessWidget {
 
   Widget buildDescription() => TextFormField(
         maxLines: 3,
+        
         initialValue: description,
+        
         onChanged: onChangedDescription,
+        
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
+          // style:TextF
           labelText: 'Description',
         ),
       );
 
+  //BUTTON_save
   Widget buildButton() => SizedBox(
         width: double.infinity,
         child: ElevatedButton(

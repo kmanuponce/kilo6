@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:todo_app_ui_ii_example/model/todo.dart';
+import 'package:kilo6/model/todo.dart';
 
 class TodosProvider extends ChangeNotifier {
   List<Todo> _todos = [
@@ -11,44 +11,51 @@ class TodosProvider extends ChangeNotifier {
 - Bread
 - Water''',
     ),
+    
     Todo(
       createdTime: DateTime.now(),
-      title: 'Plan family trip to Norway',
-      description: '''- Rent some hotels
-- Rent a car
-- Pack suitcase''',
+      title: 'Plan family trip to Hawaii',
+      description: '''- Ask Mommy to pickup 
+- Eat some local food
+- Pack gifts''',
     ),
+    
     Todo(
       createdTime: DateTime.now(),
-      title: 'Walk the Dog 🐕',
+      title: 'Walk the Kaleo 🐕',
     ),
+    
     Todo(
       createdTime: DateTime.now(),
-      title: 'Plan Jacobs birthday party 🎉🥳',
+      title: "Plan Manu's birthday party 🎉🥳",
+    ),
+
+    Todo(
+      createdTime: DateTime.now(),
+      title: 'Go grocery shopping',
     ),
   ];
 
   List<Todo> get todos => _todos.where((todo) => todo.isDone == false).toList();
 
-  List<Todo> get todosCompleted =>
-      _todos.where((todo) => todo.isDone == true).toList();
+  List<Todo> get todosCompleted => 
+    _todos.where((todo) => todo.isDone == true).toList();
 
   void addTodo(Todo todo) {
     _todos.add(todo);
-
+    
+    // updates UI
     notifyListeners();
   }
 
   void removeTodo(Todo todo) {
     _todos.remove(todo);
-
     notifyListeners();
-  }
+  } 
 
   bool toggleTodoStatus(Todo todo) {
     todo.isDone = !todo.isDone;
     notifyListeners();
-
     return todo.isDone;
   }
 

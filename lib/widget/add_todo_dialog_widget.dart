@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app_ui_ii_example/model/todo.dart';
-import 'package:todo_app_ui_ii_example/provider/todos.dart';
-import 'package:todo_app_ui_ii_example/widget/todo_form_widget.dart';
+import 'package:kilo6/model/todo.dart';
+import 'package:kilo6/provider/todos.dart';
+import 'package:kilo6/widget/todo_form_widget.dart';
 
 class AddTodoDialogWidget extends StatefulWidget {
   @override
@@ -14,6 +14,8 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
   String title = '';
   String description = '';
 
+  // get Todosprovider => null;
+
   @override
   Widget build(BuildContext context) => AlertDialog(
         content: Form(
@@ -21,25 +23,30 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
+            
             children: [
               Text(
-                'Add Todo',
+                'Add Task',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 22,
                 ),
               ),
+              
               const SizedBox(height: 8),
+              
               TodoFormWidget(
                 onChangedTitle: (title) => setState(() => this.title = title),
                 onChangedDescription: (description) =>
                     setState(() => this.description = description),
+                
+                // BUTTON-save when click
                 onSavedTodo: addTodo,
               ),
             ],
           ),
         ),
-      );
+    );
 
   void addTodo() {
     final isValid = _formKey.currentState.validate();
@@ -56,7 +63,6 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
 
       final provider = Provider.of<TodosProvider>(context, listen: false);
       provider.addTodo(todo);
-
       Navigator.of(context).pop();
     }
   }

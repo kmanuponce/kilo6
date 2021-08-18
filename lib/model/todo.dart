@@ -6,11 +6,18 @@ class TodoField {
 
 class Todo {
   DateTime createdTime;
+  
   String title;
+  
+  // unique id
   String id;
+  
   String description;
+  
+  // is it inside of "todos" or "completed"
   bool isDone;
 
+  // CONSTRUCTOR w/ the following inside
   Todo({
     @required this.createdTime,
     @required this.title,
@@ -19,3 +26,4 @@ class Todo {
     this.isDone = false,
   });
 }
+
