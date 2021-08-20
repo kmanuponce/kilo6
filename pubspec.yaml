@@ -22,3 +22,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets: 
+    - assets/logo-kilo-test7.jpg
+    - assets/logo-icon.png
+    - assets/dark-ocean.jpg
+    - assets/dark-ocean2.jpg

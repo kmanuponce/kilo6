@@ -22,13 +22,25 @@ class _HomePageState extends State<HomePage> {
       // first page
       TodoListWidget(),
       CompletedListWidget(),
-      // add GameWidget(),
     ];
 
     return Scaffold(
       backgroundColor: Colors.grey[800],
       appBar: AppBar(
         title: Text(MyApp.title),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 50,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(
+                'https://images.unsplash.com/photo-1468657988500-aca2be09f4c6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+                ),
+              fit: BoxFit.cover,
+              ),
+          ),
+        ),
       ),
       
       bottomNavigationBar: BottomNavigationBar(
